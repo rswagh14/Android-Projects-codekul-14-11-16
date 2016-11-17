@@ -10,7 +10,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
+
+    TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class MainActivity extends Activity {
 
 
         //Create Textview
-        TextView text = new TextView(this);
+        final TextView text = new TextView(this);
         LinearLayout.LayoutParams paramstext = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         text.setLayoutParams(paramstext);
         text.setText("Hello Text View");
@@ -50,8 +52,19 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
+                text.setText("Clicked");
             }
         });
+
+      /*  btnOkay.setOnClickListener(v->{
+            text.setText("lambda");
+        }); //lambda
+
+        */
+
+        /*
+        btnOkay.setOnClickListener(this::okayClicked);//method reference
+       */
 
         //method 2
        // btnOkay.setOnClickListener(new Click());
@@ -59,6 +72,12 @@ public class MainActivity extends Activity {
         //method 3
       //  View.OnClickListener lis = new Click();
        // btnOkay.setOnClickListener(lis);
+    }
+
+
+    public void okayClicked(){
+
+        text.setText("Method Reference");
     }
 
     /*
